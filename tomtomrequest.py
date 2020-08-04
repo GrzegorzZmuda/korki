@@ -5,29 +5,29 @@ import numpy as np
 from PIL import Image
 import psycopg2
 from datetime import datetime
-
+import nongit
 
 def main():
     key="cf803Zv11WsSi0J2RcjG6REKXt6w6RAh"
 
-    r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1136/693.png?key="+key)
+    r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1136/693.png?key="+nongit.apikey())
     stream = BytesIO(r.content)
     UL = Image.open(stream).convert("RGBA")
     stream.close()
 
 
-    r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1137/693.png?key="+key)
+    r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1137/693.png?key="+nongit.apikey())
     stream = BytesIO(r.content)
     UR = Image.open(stream).convert("RGBA")
     stream.close()
 
-    r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1136/694.png?key="+key)
+    r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1136/694.png?key="+nongit.apikey())
     stream = BytesIO(r.content)
     DL = Image.open(stream).convert("RGBA")
     stream.close()
 
 
-    r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1137/694.png?key="+key)
+    r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1137/694.png?key="+nongit.apikey())
     stream = BytesIO(r.content)
     DR= Image.open(stream).convert("RGBA")
     stream.close()
@@ -45,11 +45,7 @@ def main():
 
 
     try:
-            connection = psycopg2.connect(user="postgres",
-                                  password="all",
-                                  host="127.0.0.1",
-                                  port="5432",
-                                  database="Jammology")
+            connection = nongit.connectiondata()
             cursor = connection.cursor()
             postgres_insert_query = """ INSERT INTO images  VALUES (%s,%s)"""
 

@@ -10,6 +10,8 @@ import ast
 import datetime
 import gui
 import tomtomrequest
+from nongit import connectiondata
+
 
 def tomreq():
     tomtomrequest.main()
@@ -206,11 +208,7 @@ def muldisp(data):
 
 def postgresquery(a):
     try:
-            connection = psycopg2.connect(user="postgres",
-                                  password="all",
-                                  host="127.0.0.1",
-                                  port="5432",
-                                  database="Jammology")
+            connection = connectiondata()
             cursor = connection.cursor()
             exstr=a
             cursor.execute(exstr)
@@ -236,7 +234,7 @@ def postgresquerymul(a):
                                   password="all",
                                   host="127.0.0.1",
                                   port="5432",
-                                  database="Jammology")
+                                  database="API")
             cursor = connection.cursor()
             exstr=a
             cursor.execute(exstr)
