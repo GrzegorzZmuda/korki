@@ -145,7 +145,7 @@ def disp(data):
             for k in range(3):
                 ls[i][j].append(data[i][j][k])
 
-    fdata = np.array(ls)
+    fdata = np.array()
     surf1 = pygame.surfarray.make_surface(fdata)
     surf1 = pygame.transform.flip(surf1, True, False)
     surf1 = pygame.transform.rotate(surf1, 90)

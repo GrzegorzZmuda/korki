@@ -8,7 +8,7 @@ from datetime import datetime
 import nongit
 
 def main():
-    key="cf803Zv11WsSi0J2RcjG6REKXt6w6RAh"
+
 
     r = requests.get("https://api.tomtom.com/traffic/map/4/tile/flow/relative/11/1136/693.png?key="+nongit.apikey())
     stream = BytesIO(r.content)
